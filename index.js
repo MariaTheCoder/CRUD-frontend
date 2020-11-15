@@ -36,7 +36,7 @@ clearBtn.addEventListener("click", function () {
   groceryList.innerHTML = "";
 });
 
-
+/* Function to create a new element given 3 parameters, being element, inner text and class(es) */
 function create(element, innerText="", arrayOfClasses=[], id="") {
     const resultingElement = document.createElement(element);
     resultingElement.id = id;
