@@ -16,6 +16,10 @@ submitBtn.addEventListener("click", function () {
   const updateBtn = create("button", "Update");
   const deleteBtn = create("button", "Delete");
 
+  deleteBtn.addEventListener("click", function() {
+      groceryList.removeChild(this.parentElement.parentElement);
+  });
+
   item.appendChild(itemName);
   actions.appendChild(updateBtn);
   actions.appendChild(deleteBtn);
