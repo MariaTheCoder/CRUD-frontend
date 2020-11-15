@@ -10,8 +10,16 @@ const inputItem = document.getElementById("input");
 
 /* The eventlistener underneath adds a new element to list according to what is typed into input field*/
 submitBtn.addEventListener("click", function () {
-  let item = document.createElement("li");
-  item.innerText = inputItem.value;
+  const item = create("li", "", ["grocery_item"])
+  const itemName = create("span", inputItem.value, ["item_name"] );
+  const actions = create("span", "", ["actions", "item_actions"])
+  const updateBtn = create("button", "Update");
+  const deleteBtn = create("button", "Delete");
+
+  item.appendChild(itemName);
+  actions.appendChild(updateBtn);
+  actions.appendChild(deleteBtn);
+  item.appendChild(actions);
   groceryList.appendChild(item);
 });
 
@@ -20,3 +28,14 @@ clearBtn.addEventListener("click", function () {
   groceryList.innerHTML = "";
 });
 
+
+function create(element, innerText="", arrayOfClasses=[], id="") {
+    const resultingElement = document.createElement(element);
+    resultingElement.id = id;
+    resultingElement.innerText = innerText;
+    arrayOfClasses.forEach(cls => {
+        resultingElement.classList.add(cls);
+    });
+
+    return resultingElement;
+}
