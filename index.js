@@ -20,6 +20,10 @@ submitBtn.addEventListener("click", function () {
       groceryList.removeChild(this.parentElement.parentElement);
   });
 
+  updateBtn.addEventListener("click", function() {
+      alert("I was clicked!");
+  });
+
   item.appendChild(itemName);
   actions.appendChild(updateBtn);
   actions.appendChild(deleteBtn);
