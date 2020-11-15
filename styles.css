@@ -4,3 +4,7 @@ html, body {
 .actions {
     margin-left: 4rem;
 }
+
+.actions button {
+    margin-left: 10px;
+}
