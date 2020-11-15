@@ -6,7 +6,7 @@ const groceryList = document.getElementById("groceries");
 
 submitBtn.addEventListener("click", function() {
     
-    let item = document.createElement("ul");
+    let item = document.createElement("li");
     item.innerText = inputItem.value;
     groceryList.appendChild(item);
     // alert(inputItem.value);
