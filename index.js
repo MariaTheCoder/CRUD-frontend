@@ -25,6 +25,8 @@ submitBtn.addEventListener("click", function () {
     /* This code expresses what happens in update-mode */
     if(this.innerText === "Update") {
       this.innerText = "Save"
+      inputItem.value = "";
+      inputItem.disabled = true;
 
       const currentValue = this.parentElement.previousSibling.innerText;
       this.parentElement.parentElement.removeChild(this.parentElement.previousSibling);
@@ -34,6 +36,7 @@ submitBtn.addEventListener("click", function () {
       this.parentElement.parentElement.prepend(inputNewValue);
     } 
     else {
+      inputItem.disabled = false;
 
       /* This code expresses what happens upon clicking 'save' / exiting update-mode */
       this.innerText = "Update";
