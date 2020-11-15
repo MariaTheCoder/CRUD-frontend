@@ -23,7 +23,7 @@ submitBtn.addEventListener("click", function () {
   const updateBtn = create("button", "Update");
   const deleteBtn = create("button", "Delete");
 
-  if(inputItem.value === "") return alert("Please type in an item");
+  if(inputItem.value.trim() === "") return alert("Please type in an item");
 
   inputItem.value = "";
 
@@ -45,20 +45,34 @@ submitBtn.addEventListener("click", function () {
       this.parentElement.parentElement.removeChild(this.parentElement.previousSibling);
 
       const inputNewValue = create("input");
+
       inputNewValue.value = currentValue;
       this.parentElement.parentElement.prepend(inputNewValue);
     } 
     else {
-      inputItem.disabled = false;
-
-      /* This code expresses what happens upon clicking 'save' / exiting update-mode */
-      this.innerText = "Update";
 
       const newValue = this.parentElement.previousSibling.value;
-      this.parentElement.parentElement.removeChild(this.parentElement.previousSibling);
 
-      const itemSpan = create("span", newValue, ["item_name"]);
-      this.parentElement.parentElement.prepend(itemSpan);
+      if(newValue.trim() === "") {
+        inputItem.disabled = true;
+
+        return alert("Please type in an element");
+      }
+      else {
+
+        inputItem.disabled = false;
+
+        /* This code expresses what happens upon clicking 'save' / exiting update-mode */
+        this.innerText = "Update";
+    
+        this.parentElement.parentElement.removeChild(this.parentElement.previousSibling);
+  
+        const itemSpan = create("span", newValue, ["item_name"]);
+        
+        this.parentElement.parentElement.prepend(itemSpan);
+      
+      }
+
     };
   });
 
