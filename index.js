@@ -21,7 +21,30 @@ submitBtn.addEventListener("click", function () {
   });
 
   updateBtn.addEventListener("click", function () {
-    alert("I was clicked!");
+
+    /* This code expresses what happens in update-mode */
+    if(this.innerText === "Update") {
+      this.innerText = "Save"
+
+      const currentValue = this.parentElement.previousSibling.innerText;
+      this.parentElement.parentElement.removeChild(this.parentElement.previousSibling);
+
+      const inputNewValue = create("input");
+      inputNewValue.value = currentValue;
+      this.parentElement.parentElement.prepend(inputNewValue);
+    } 
+    else {
+
+      /* This code expresses what happens upon clicking 'save' / exiting update-mode */
+      this.innerText = "Update";
+
+      const newValue = this.parentElement.previousSibling.value;
+      this.parentElement.parentElement.removeChild(this.parentElement.previousSibling);
+
+      const itemSpan = create("span", newValue, ["item_name"]);
+      this.parentElement.parentElement.prepend(itemSpan);
+    };
+
   });
 
   item.appendChild(itemName);
