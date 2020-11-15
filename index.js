@@ -8,6 +8,13 @@ const groceryList = document.getElementById("groceries");
 /* Defining input item / new item on grocery list */
 const inputItem = document.getElementById("input");
 
+inputItem.addEventListener("keydown", function(event) {
+  if(event.key === "Enter") {
+    event.preventDefault();
+    submitBtn.click();
+  }
+});
+
 /* The eventlistener underneath adds a new element to list according to what is typed into input field*/
 submitBtn.addEventListener("click", function () {
   const item = create("li", "", ["grocery_item"]);
@@ -16,8 +23,14 @@ submitBtn.addEventListener("click", function () {
   const updateBtn = create("button", "Update");
   const deleteBtn = create("button", "Delete");
 
+  if(inputItem.value === "") return alert("Please type in an item");
+
+  inputItem.value = "";
+
   deleteBtn.addEventListener("click", function () {
     groceryList.removeChild(this.parentElement.parentElement);
+
+    inputItem.disabled = false;
   });
 
   updateBtn.addEventListener("click", function () {
@@ -47,7 +60,6 @@ submitBtn.addEventListener("click", function () {
       const itemSpan = create("span", newValue, ["item_name"]);
       this.parentElement.parentElement.prepend(itemSpan);
     };
-
   });
 
   item.appendChild(itemName);
