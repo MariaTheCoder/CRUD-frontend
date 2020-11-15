@@ -10,18 +10,18 @@ const inputItem = document.getElementById("input");
 
 /* The eventlistener underneath adds a new element to list according to what is typed into input field*/
 submitBtn.addEventListener("click", function () {
-  const item = create("li", "", ["grocery_item"])
-  const itemName = create("span", inputItem.value, ["item_name"] );
-  const actions = create("span", "", ["actions", "item_actions"])
+  const item = create("li", "", ["grocery_item"]);
+  const itemName = create("span", inputItem.value, ["item_name"]);
+  const actions = create("span", "", ["actions", "item_actions"]);
   const updateBtn = create("button", "Update");
   const deleteBtn = create("button", "Delete");
 
-  deleteBtn.addEventListener("click", function() {
-      groceryList.removeChild(this.parentElement.parentElement);
+  deleteBtn.addEventListener("click", function () {
+    groceryList.removeChild(this.parentElement.parentElement);
   });
 
-  updateBtn.addEventListener("click", function() {
-      alert("I was clicked!");
+  updateBtn.addEventListener("click", function () {
+    alert("I was clicked!");
   });
 
   item.appendChild(itemName);
@@ -37,13 +37,13 @@ clearBtn.addEventListener("click", function () {
 });
 
 /* Function to create a new element given 3 parameters, being element, inner text and class(es) */
-function create(element, innerText="", arrayOfClasses=[], id="") {
-    const resultingElement = document.createElement(element);
-    resultingElement.id = id;
-    resultingElement.innerText = innerText;
-    arrayOfClasses.forEach(cls => {
-        resultingElement.classList.add(cls);
-    });
+function create(element, innerText = "", arrayOfClasses = [], id = "") {
+  const resultingElement = document.createElement(element);
+  resultingElement.id = id;
+  resultingElement.innerText = innerText;
+  arrayOfClasses.forEach((cls) => {
+    resultingElement.classList.add(cls);
+  });
 
-    return resultingElement;
+  return resultingElement;
 }
